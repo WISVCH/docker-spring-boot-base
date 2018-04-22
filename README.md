@@ -9,7 +9,6 @@ RUN ./gradlew build
 
 FROM wisvch/spring-boot-base:1
 COPY --from=builder /src/build/libs/application.jar /srv/application.jar
-USER 999
 CMD ["/srv/application.jar"]
 ```
 
@@ -17,6 +16,5 @@ CMD ["/srv/application.jar"]
 ```Dockerfile
 FROM wisvch/spring-boot-base:1
 COPY ./build/libs/application.jar /srv/application.jar
-USER 999
 CMD ["/srv/application.jar"]
 ```
