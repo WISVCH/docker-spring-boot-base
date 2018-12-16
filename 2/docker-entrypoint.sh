@@ -6,7 +6,7 @@ case $1 in
 			echo "Refusing to run as user other than spring-boot"
 			exit 1
 		fi
-		exec /usr/bin/java -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -XX:+ExitOnOutOfMemoryError -XshowSettings:vm -Djava.security.egd=file:/dev/./urandom $JAVA_OPTS -jar $1
+		exec /usr/bin/java -XX:+ExitOnOutOfMemoryError -XshowSettings:vm $JAVA_OPTS -jar $1
 		;;
 esac
 
