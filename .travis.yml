@@ -1,0 +1,19 @@
+language: minimal
+services:
+  - docker
+env:
+  - TAG=1
+  - TAG=2.1
+script:
+  - cd $TAG
+  - docker build --no-cache --pull -t wisvch/spring-boot-base:$TAG .
+deploy:
+  - provider: script
+    script: >-
+      sh -c '
+      docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
+      echo pushing to wisvch/spring-boot-base:$TAG;
+      docker push wisvch/spring-boot-base:$TAG;
+      '
+    on:
+      branch: master
