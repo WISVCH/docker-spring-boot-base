@@ -1,5 +1,10 @@
-FROM quay.io/wisvch/openjdk:11-jre-slim
+FROM adoptopenjdk:11-jre-hotspot
 
+ADD https://ch.tudelft.nl/certs/wisvch.crt /usr/local/share/ca-certificates/wisvch.crt
+RUN chmod 0644 /usr/local/share/ca-certificates/wisvch.crt && \
+    update-ca-certificates
+ADD https://search.maven.org/remote_content?g=com.datadoghq&a=dd-java-agent&v=LATEST /opt/datadog/dd-java-agent.jar
+RUN chmod 0644 /opt/datadog/dd-java-agent.jar
 RUN groupadd -r spring-boot --gid=999 && useradd --no-log-init -r -g spring-boot --uid=999 spring-boot
 USER 999
 COPY docker-entrypoint.sh /usr/local/bin/
