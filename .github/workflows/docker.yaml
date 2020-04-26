@@ -1,0 +1,34 @@
+name: Docker
+on:
+  push:
+jobs:
+  buildDockerImage:
+    name: Build Docker image
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        tag: [1, 2.1]
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v1
+      with:
+        fetch-depth: 1
+    - name: Push to GitHub Packages
+      uses: docker/build-push-action@v1
+      with:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: docker.pkg.github.com
+        repository: wisvch/spring-boot-base/${{ matrix.tag }}
+        path: ${{ matrix.tag }}
+        push: ${{ github.ref == 'refs/heads/master' }}
+    - name: Push to Quay
+      uses: docker/build-push-action@v1
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        registry: quay.io
+        repository: wisvch/spring-boot-base
+        path: ${{ matrix.tag }}
+        tags: ${{ matrix.tag }}
+        push: ${{ github.ref == 'refs/heads/master' }}
