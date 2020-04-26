@@ -4,6 +4,7 @@ In the following examples, replace the image tag by the correct value:
 
 - `1` for Spring Boot 1.x (Java 8, supported until at least May 2026)
 - `2.1` for Spring Boot 2.1 and newer (Java 11, supported until at least October 2024)
+- `2.2` for Spring Boot 2.2.6 and newer (Java 14, supported until September 2020)
 
 See the [AdoptOpenJDK release roadmap](https://adoptopenjdk.net/support.html#roadmap) for
 more details.
