@@ -4,6 +4,7 @@ services:
 env:
   - TAG=1
   - TAG=2.1
+  - TAG=2.2
 script:
   - cd $TAG
   - docker build --no-cache --pull -t wisvch/spring-boot-base:$TAG .
