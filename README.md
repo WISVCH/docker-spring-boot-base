@@ -3,7 +3,6 @@
 In the following examples, replace the image tag by the correct value:
 
 - `1` for Spring Boot 1.x (Java 8)
-- `2` for Spring Boot 2.0 (Java 10)
 - `2.1` for Spring Boot 2.1 and newer (Java 11)
 
 ## Multi-stage build example
