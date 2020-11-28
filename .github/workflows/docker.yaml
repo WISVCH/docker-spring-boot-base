@@ -21,7 +21,7 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: wisvch/spring-boot-base
         path: ${{ matrix.tag }}
-        tags: latest
+        tags: ${{ matrix.tag }}
         push: ${{ github.ref == 'refs/heads/master' }}
     - name: Push to GitHub Packages
       uses: docker/build-push-action@v1
@@ -31,5 +31,5 @@ jobs:
         registry: docker.pkg.github.com
         repository: wisvch/docker-spring-boot-base/${{ matrix.tag }}
         path: ${{ matrix.tag }}
-        tags: latest
+        tags: ${{ matrix.tag }}
         push: ${{ github.ref == 'refs/heads/master' }}
