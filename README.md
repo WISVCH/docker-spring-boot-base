@@ -17,7 +17,7 @@ COPY . /src
 WORKDIR /src
 RUN ./gradlew build
 
-FROM docker.pkg.github.com/wisvch/docker-spring-boot-base/2.1
+FROM wisvch/spring-boot-base:2.1
 COPY --from=builder /src/build/libs/application.jar /srv/application.jar
 CMD ["/srv/application.jar"]
 ```
@@ -25,7 +25,7 @@ CMD ["/srv/application.jar"]
 ## External build example
 
 ```Dockerfile
-FROM docker.pkg.github.com/wisvch/docker-spring-boot-base/2.1
+FROM wisvch/spring-boot-base:2.1
 COPY ./build/libs/application.jar /srv/application.jar
 CMD ["/srv/application.jar"]
 ```
