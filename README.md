@@ -5,13 +5,13 @@ In the following examples, replace the image tag by the correct value:
 - `1` for Spring Boot 1.x (Java 8, supported until at least May 2026)
 - `2.1` for Spring Boot 2.1 and newer (Java 11, supported until at least October 2024)
 
-See the [AdoptOpenJDK release roadmap](https://adoptopenjdk.net/support.html#roadmap) for
+See the [Adoptium release roadmap](https://adoptium.net/support#roadmap) for
 more details.
 
 ## Multi-stage build example
 
 ```Dockerfile
-FROM adoptopenjdk:11-hotspot AS builder
+FROM eclipse-temurin:11 AS builder
 COPY . /src
 WORKDIR /src
 RUN ./gradlew build
