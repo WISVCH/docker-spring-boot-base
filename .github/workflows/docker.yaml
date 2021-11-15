@@ -3,7 +3,7 @@ on:
   push:
   workflow_dispatch:
   schedule:
-  - cron: '54 2 2 * *'
+  - cron: '54 4 2 * *'
 jobs:
   buildDockerImage:
     name: Build Docker image
