@@ -10,12 +10,18 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        tag: [1, 2.1]
+        tag: ["1", "2.1"]
     steps:
-    - name: Check out code
-      uses: actions/checkout@v1
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
+    - name: Login to GitHub Container Registry
+      uses: docker/login-action@v1
       with:
-        fetch-depth: 1
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
     - name: Login to Docker Hub
       uses: docker/login-action@v1
       with:
@@ -25,5 +31,7 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         context: ${{ matrix.tag }}
-        tags: wisvch/spring-boot-base:${{ matrix.tag }}
+        tags: |
+          ghcr.io/wisvch/spring-boot-base:${{ matrix.tag }}
+          wisvch/spring-boot-base:${{ matrix.tag }}
         push: ${{ github.ref == 'refs/heads/master' }}
