@@ -11,7 +11,7 @@ RUN $JAVA_HOME/bin/jlink \
          --output /javaruntime
 
 # Build base image with JRE
-FROM ghcr.io/wisvch/debian:bullseye-slim
+FROM debian:bookworm-slim
 ENV JAVA_HOME=/opt/java/openjdk
 ENV PATH "${JAVA_HOME}/bin:${PATH}"
 COPY --from=jre-build /javaruntime $JAVA_HOME
