@@ -2,9 +2,9 @@
 
 In the following examples, replace the image tag by the correct value:
 
-- `1` for Spring Boot 1.x (Java 8 LTS, supported until at least May 2026)
-- `2.1` for Spring Boot 2.1 and newer (Java 11 LTS, supported until at least October 2024)
-- `2.5.5` for Spring Boot 2.5.5 and newer (Java 17 LTS, support end TBC)
+- `1` for Spring Boot 1.x (Java 8 LTS, supported until at least November 2026)
+- `2.1` for Spring Boot 2.1 and newer (Java 11 LTS, supported until at least October 2027)
+- `2.5.5` for Spring Boot 2.5.5 and newer (Java 17 LTS, support until at least October 2027)
 
 See the [Adoptium release roadmap](https://adoptium.net/support#roadmap) for
 more details.
